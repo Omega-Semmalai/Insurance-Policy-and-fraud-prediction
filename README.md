@@ -1,5 +1,7 @@
+REQUIREMENTS TO RUN THE PROJECT
 1. Python Installation
-Before starting the project, ensure you have Python installed. You can download the latest version (3.8 or your preferred version) from the official Python website:
+Before starting the project, ensure you have Python installed. You can download the latest version (3.8 or your preferred version) from the official Python website: [Download Python](https://www.python.org/downloads/)
+
 
 2. Required Python Libraries
 You will need the following Python libraries for data handling, model building, and visualization. You can install them using pip by running the commands below:
