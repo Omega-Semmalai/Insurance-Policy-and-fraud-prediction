@@ -60,4 +60,4 @@ streamlit==1.25.0
 h5py==3.8.0
 
 **6. Dataset Link**
-[Insurance Policy and Fraud Prediction Dataset]([https://www.python.org/downloads/](https://www.kaggle.com/datasets/omegasemmalaicit/insurance-policy-and-fraud-prediction )
+Insurance Policy and Fraud Prediction Dataset
