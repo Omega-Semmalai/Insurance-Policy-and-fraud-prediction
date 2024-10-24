@@ -44,7 +44,7 @@
   ```bash
   pip install streamlit
 
-**###5. Specific Library Versions**
+**5. Specific Library Versions**
 For reproducibility, ensure you're using these specific versions of the required libraries:
 ```bash
 python==3.8
