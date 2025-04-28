@@ -13,10 +13,13 @@ def load_fraud_model():
 def load_policy_model():
     return load_model('policyfinal.h5')
 
+# Modify this to load data from Google Drive
 @st.cache_data
 def load_data_and_scalers():
-    data = pd.read_csv('C:\\Omega\\Semester 5\\Machine Learning\\Project\\final.csv')
-    
+    # Update with your Google Drive CSV link
+    csv_url = "https://drive.google.com/uc?id=1nrsJDmxYDRc8Xjm08w37wn9VwZQl75IB"  # Your file ID
+    data = pd.read_csv(csv_url)
+
     fraud_features = ['Age', 'ClaimAmount', 'PastNumberOfClaims', 'DriverRating', 'Deductible']
     policy_features = ['WeekOfMonthClaimed', 'DayOfWeekClaimed', 'MonthClaimed', 'AgeOfPolicyHolder', 
                        'ClaimAmount', 'AgeOfVehicle', 'Year']
