@@ -1,0 +1,60 @@
+Inputs:
+Driver Information:
+Name
+Age
+Gender
+Driving History (number of claims, traffic violations)
+
+Vehicle Information:
+Vehicle Make and Model
+Year of Manufacture
+Vehicle Type (e.g., sedan, SUV, truck)
+Vehicle Value
+Mileage
+Engine Size
+
+Policy Information:
+Current Insurance Coverage (comprehensive, collision, liability)
+Policy Type (individual, family)
+Current Premium Amount
+Coverage Limits
+
+Geographic Information:
+Location (city, state)
+Zip Code
+Local Crime Rates
+
+Accident History:
+Number of Past Accidents
+Severity of Past Accidents
+Claims Filed in the Last 5 Years
+Outputs:
+Premium Calculation:
+
+Output: Adjusted Premium Amount based on risk assessment.
+Example: "Your new monthly premium is $600 based on your driving history and vehicle type."
+Risk Assessment:
+
+Output: Risk Score (low, medium, high) based on driver and vehicle data.
+Example: "Your risk score is high due to multiple past claims."
+Policy Recommendations:
+
+Output: Suggested policy options based on the driver’s profile and coverage needs.
+Example: "We recommend upgrading to a comprehensive policy for better coverage at an additional cost of $150/month."
+Claims Prediction:
+
+Output: Estimated likelihood of future claims based on historical data.
+Example: "Based on your driving history, there is a 25% chance of filing a claim in the next year."
+Fraud Detection Alerts:
+
+Output: Alerts for potential fraudulent activity based on provided data.
+Example: "Alert: Unusually high claim history detected. Review required."
+Coverage Evaluation:
+
+Output: Analysis of whether current coverage is adequate.
+Example: "Your current liability coverage may not be sufficient for your vehicle's value."
+Benefits to the Insurance Company:
+Data-Driven Decisions: Automating premium calculations and risk assessments helps streamline the underwriting process.
+Risk Management: Identifying high-risk drivers allows the company to adjust premiums and reduce potential losses.
+Customer Retention: Offering tailored policy recommendations can enhance customer satisfaction and retention.
+Fraud Prevention: Implementing fraud detection measures can protect the company from financial losses due to fraudulent claims.

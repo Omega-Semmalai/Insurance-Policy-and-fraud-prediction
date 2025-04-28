@@ -1,0 +1,328 @@
+
+Dataset Information:
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 150000 entries, 0 to 149999
+Data columns (total 34 columns):
+ #   Column                Non-Null Count   Dtype  
+---  ------                --------------   -----  
+ 0   Month                 150000 non-null  int64  
+ 1   WeekOfMonth           150000 non-null  int64
+ 2   DayOfWeek             150000 non-null  int64
+ 3   Make                  150000 non-null  object
+ 4   AccidentArea          150000 non-null  object
+ 5   DayOfWeekClaimed      150000 non-null  int64
+ 6   MonthClaimed          150000 non-null  int64
+ 7   WeekOfMonthClaimed    150000 non-null  int64
+ 8   Sex                   150000 non-null  object
+ 9   MaritalStatus         150000 non-null  object
+ 10  Age                   150000 non-null  int64
+ 11  Fault                 150000 non-null  object
+ 12  PolicyType            150000 non-null  object
+ 13  VehicleCategory       150000 non-null  object
+ 14  VehiclePrice          150000 non-null  float64
+ 15  ClaimAmount           150000 non-null  float64
+ 16  PolicyNumber          150000 non-null  int64
+ 17  RepNumber             150000 non-null  int64
+ 18  Deductible            150000 non-null  int64
+ 19  DriverRating          150000 non-null  int64
+ 20  Days:Policy-Accident  150000 non-null  object
+ 21  Days:Policy-Claim     150000 non-null  object
+ 22  PastNumberOfClaims    150000 non-null  int64
+ 23  AgeOfVehicle          150000 non-null  int64
+ 24  AgeOfPolicyHolder     150000 non-null  int64
+ 25  PoliceReportFiled     150000 non-null  object
+ 26  WitnessPresent        150000 non-null  object
+ 27  AgentType             150000 non-null  object
+ 28  NumberOfSuppliments   150000 non-null  int64
+ 29  AddressChange-Claim   150000 non-null  object
+ 30  NumberOfCars          150000 non-null  int64
+ 31  Year                  150000 non-null  int64
+ 32  BasePolicy            150000 non-null  object
+ 33  FraudFound            150000 non-null  object
+dtypes: float64(2), int64(17), object(15)
+memory usage: 38.9+ MB
+None
+
+First 5 rows of the dataset:
+   Month  WeekOfMonth  ...  BasePolicy FraudFound
+0     11            1  ...   Liability        Yes
+1      2            3  ...   Liability         No
+2     10            1  ...   Collision         No
+3     11            3  ...   Liability         No
+4      6            1  ...  All Perils        Yes
+
+[5 rows x 34 columns]
+
+Missing Values:
+Month                   0
+WeekOfMonth             0
+DayOfWeek               0
+Make                    0
+AccidentArea            0
+DayOfWeekClaimed        0
+MonthClaimed            0
+WeekOfMonthClaimed      0
+Sex                     0
+MaritalStatus           0
+Age                     0
+Fault                   0
+PolicyType              0
+VehicleCategory         0
+VehiclePrice            0
+ClaimAmount             0
+PolicyNumber            0
+RepNumber               0
+Deductible              0
+DriverRating            0
+Days:Policy-Accident    0
+Days:Policy-Claim       0
+PastNumberOfClaims      0
+AgeOfVehicle            0
+AgeOfPolicyHolder       0
+PoliceReportFiled       0
+WitnessPresent          0
+AgentType               0
+NumberOfSuppliments     0
+AddressChange-Claim     0
+NumberOfCars            0
+Year                    0
+BasePolicy              0
+FraudFound              0
+dtype: int64
+
+MSE: 0.3006
+RMSE: 0.5483
+Accuracy: 0.6994
+AUC-ROC: 0.4959
+
+Fitting 3 folds for each of 10 candidates, totalling 30 fits
+
+Tuned Model - MSE: 0.3037, RMSE: 0.5511, Accuracy: 0.6963   
+AUC-ROC for Tuned Model: 0.5057
+
+
+
+Neural networks:
+Fraudulent claim or not : 
+Gradient Boosted Neural Networks - Accuracy: 0.6966, MSE: 0.3034, MAE: 0.3034, ROC AUC: 0.5035
+
+HYPER PARAMETER TUNING :
+First:
+Final Model with Best Parameters - Accuracy: 0.6905, MSE: 0.3095, MAE: 0.3095, ROC AUC: 0.4967
+
+
+Best Parameters:  {'neurons_1': 64, 'neurons_2': 32, 'epochs': 20, 'batch_size': 16}
+Final Model with Best Parameters - Accuracy: 0.6879, MSE: 0.3121, MAE: 0.3121, ROC AUC: 0.5048
+Fold 1 - Accuracy: 0.6962
+Fold 2 - Accuracy: 0.7003
+Fold 3 - Accuracy: 0.6995
+Fold 4 - Accuracy: 0.7009
+Fold 5 - Accuracy: 0.6988
+Average accuracy after k-fold cross-validation: 0.6992
+Final Model with Best Parameters - Accuracy: 0.7002, MSE: 0.2998, MAE: 0.2998, ROC AUC: 0.5052
+
+
+
+
+Predicting Policy type :
+Gradient Boosted Neural Networks - Accuracy for Policy Type: 0.3346
+MSE: 1.3564, MAE: 0.8957, ROC AUC: 0.5001
+
+HYPER PARAMETER TUNING : 
+Best Parameters:  {'neurons_1': 64, 'neurons_2': 32, 'epochs': 20, 'batch_size': 32}
+Final Model with Best Parameters - Accuracy: 0.3338, MSE: 1.3995, MAE: 0.9106, ROC AUC: 0.5026
+
+second :
+Best Parameters:  {'neurons_1': 128, 'neurons_2': 64, 'dropout_rate': 0.2, 'epochs': 20, 'batch_size': 64}
+Accuracy: 0.3340, MSE: 1.4310, MAE: 0.9210, ROC AUC: 0.5005
+
+
+
+
+FEED FORWARD NEURAL NETWORKS :
+50 epochs:
+Test accuracy: 0.6931
+938/938 ━━━━━━━━━━━━━━━━━━━━ 1s 763us/step
+Accuracy: 0.6931
+MSE: 0.3069
+RMSE: 0.5540
+MAE: 0.3069
+ROC AUC: 0.5025
+
+20 epochs :
+Test accuracy: 0.6958
+938/938 ━━━━━━━━━━━━━━━━━━━━ 1s 789us/step
+Accuracy: 0.6958
+MSE: 0.3042
+RMSE: 0.5516
+MAE: 0.3042
+ROC AUC: 0.5063
+
+10 epochs :
+Test accuracy: 0.6993
+938/938 ━━━━━━━━━━━━━━━━━━━━ 1s 789us/step
+Accuracy: 0.6993
+MSE: 0.3007
+RMSE: 0.5484
+MAE: 0.3007
+ROC AUC: 0.5001
+
+
+HYPERPARAMETER TUNING :
+Search: Running Trial #1
+
+Value             |Best Value So Far |Hyperparameter
+3                 |3                 |num_hidden_layers
+64                |64                |neurons_input_layer
+relu              |relu              |activation_input_layer
+Trial 1 Complete [00h 01m 51s]
+val_accuracy: 0.7032222151756287
+
+Best val_accuracy So Far: 0.7032222151756287
+Total elapsed time: 00h 01m 51s
+
+Search: Running Trial #2
+
+Value             |Best Value So Far |Hyperparameter
+3                 |3                 |num_hidden_layers
+48                |64                |neurons_input_layer
+tanh              |relu              |activation_input_layer
+64                |16                |neurons_hidden_layer
+tanh              |relu              |activation_hidden_layer
+Trial 2 Complete [00h 06m 41s]
+val_accuracy: 0.7032361030578613
+
+Best val_accuracy So Far: 0.7032361030578613
+Total elapsed time: 00h 08m 32s
+
+Search: Running Trial #3
+
+Value             |Best Value So Far |Hyperparameter
+1                 |3                 |num_hidden_layers
+64                |48                |neurons_input_layer
+relu              |tanh              |activation_input_layer
+16                |64                |neurons_hidden_layer
+tanh              |tanh              |activation_hidden_layer
+Trial 3 Complete [00h 01m 36s]
+val_accuracy: 0.7032222151756287
+
+Best val_accuracy So Far: 0.7032361030578613
+Total elapsed time: 00h 10m 08s
+
+Search: Running Trial #4
+
+Value             |Best Value So Far |Hyperparameter
+3                 |3                 |num_hidden_layers
+16                |48                |neurons_input_layer
+relu              |tanh              |activation_input_layer
+32                |64                |neurons_hidden_layer
+relu              |tanh              |activation_hidden_layer
+Trial 4 Complete [00h 01m 48s]
+val_accuracy: 0.7032222151756287
+
+Best val_accuracy So Far: 0.7032361030578613
+Total elapsed time: 00h 11m 56s
+
+Search: Running Trial #5
+
+Value             |Best Value So Far |Hyperparameter
+3                 |3                 |num_hidden_layers
+64                |48                |neurons_input_layer
+tanh              |tanh              |activation_input_layer
+16                |64                |neurons_hidden_layer
+relu              |tanh              |activation_hidden_layer
+Trial 5 Complete [00h 05m 18s]
+val_accuracy: 0.7032222151756287
+
+Best val_accuracy So Far: 0.7032361030578613
+Total elapsed time: 00h 17m 14s
+
+Search: Running Trial #6
+
+Value             |Best Value So Far |Hyperparameter
+2                 |3                 |num_hidden_layers
+64                |48                |neurons_input_layer
+tanh              |tanh              |activation_input_layer
+32                |64                |neurons_hidden_layer
+relu              |tanh              |activation_hidden_layer
+Trial 6 Complete [00h 01m 44s]
+val_accuracy: 0.7032361030578613
+
+Best val_accuracy So Far: 0.7032361030578613
+Total elapsed time: 00h 18m 58s
+
+Search: Running Trial #7
+
+Value             |Best Value So Far |Hyperparameter
+2                 |3                 |num_hidden_layers
+64                |48                |neurons_input_layer
+relu              |tanh              |activation_input_layer
+32                |64                |neurons_hidden_layer
+tanh              |tanh              |activation_hidden_layer
+Trial 7 Complete [00h 01m 42s]
+val_accuracy: 0.703208327293396
+
+Best val_accuracy So Far: 0.7032361030578613
+Total elapsed time: 00h 20m 40s
+
+Search: Running Trial #8
+
+Value             |Best Value So Far |Hyperparameter
+2                 |3                 |num_hidden_layers
+32                |48                |neurons_input_layer
+relu              |tanh              |activation_input_layer
+16                |64                |neurons_hidden_layer
+tanh              |tanh              |activation_hidden_layer
+Trial 8 Complete [00h 01m 41s]
+val_accuracy: 0.703208327293396
+
+Best val_accuracy So Far: 0.7032361030578613
+Total elapsed time: 00h 22m 22s
+
+Search: Running Trial #9
+
+Value             |Best Value So Far |Hyperparameter
+1                 |3                 |num_hidden_layers
+64                |48                |neurons_input_layer
+tanh              |tanh              |activation_input_layer
+32                |64                |neurons_hidden_layer
+relu              |tanh              |activation_hidden_layer
+Trial 9 Complete [00h 27m 57s]
+val_accuracy: 0.7032361030578613
+
+Best val_accuracy So Far: 0.7032361030578613
+Total elapsed time: 00h 50m 19s
+
+Search: Running Trial #10
+
+Value             |Best Value So Far |Hyperparameter
+2                 |3                 |num_hidden_layers
+48                |48                |neurons_input_layer
+relu              |tanh              |activation_input_layer
+48                |64                |neurons_hidden_layer
+tanh              |tanh              |activation_hidden_layer
+Trial 10 Complete [00h 01m 43s]
+val_accuracy: 0.703208327293396
+
+Best val_accuracy So Far: 0.7032361030578613
+Total elapsed time: 00h 52m 02s
+
+
+Best Accuracy: 0.7002
+MSE: 0.2998
+RMSE: 0.5475
+MAE: 0.2998
+ROC AUC: 0.5037
+
+
+POLICY TYPE : 
+Normal
+Feedforward Neural Networks - Accuracy for Policy Type: 0.3351
+MSE: 1.3589, MAE: 0.8963, ROC AUC: 0.4995
+
+Hyper parameter tuning 
+Best Hyperparameters: {'optimizer': 'adam', 'model_neurons_2': 64, 'modelneurons_1': 128, 'model_dropout_rate': 0.2, 'epochs': 30, 'batch_size': 128}
+Final Model - Accuracy: 0.3347
+MSE: 1.2829
+MAE: 0.8711
+ROC AUC: 0.4994
