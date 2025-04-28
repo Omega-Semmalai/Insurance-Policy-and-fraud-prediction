@@ -6,10 +6,10 @@ from keras.models import load_model # type: ignore
 
 # Load the models
 fraud_model = load_model("lstm_fraud_model.h5")
-policy_model = load_model('policy_model.h5')
+policy_model = load_model('policyfinal.h5')
 
 # Load the dataset and fit the scalers
-data = pd.read_csv('final .csv')
+data = pd.read_csv('C:\\Omega\\Semester 5\\Machine Learning\\Project\\final.csv')
 fraud_features = ['Age', 'ClaimAmount', 'PastNumberOfClaims', 'DriverRating', 'Deductible']
 policy_features = ['WeekOfMonthClaimed', 'DayOfWeekClaimed', 'MonthClaimed', 'AgeOfPolicyHolder', 
                    'ClaimAmount', 'AgeOfVehicle', 'Year']
