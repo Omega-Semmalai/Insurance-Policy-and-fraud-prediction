@@ -4,27 +4,39 @@ import numpy as np
 from sklearn.preprocessing import StandardScaler, LabelEncoder
 from keras.models import load_model # type: ignore
 
-# Load the models
-fraud_model = load_model("lstm_fraud_model.h5")
-policy_model = load_model('policyfinal.h5')
+# Load models with caching
+@st.cache_resource
+def load_fraud_model():
+    return load_model("lstm_fraud_model.h5")
 
-# Load the dataset and fit the scalers
-data = pd.read_csv('C:/Omega/Semester 5/Machine Learning/Project/final.csv')
-fraud_features = ['Age', 'ClaimAmount', 'PastNumberOfClaims', 'DriverRating', 'Deductible']
-policy_features = ['WeekOfMonthClaimed', 'DayOfWeekClaimed', 'MonthClaimed', 'AgeOfPolicyHolder', 
-                   'ClaimAmount', 'AgeOfVehicle', 'Year']
+@st.cache_resource
+def load_policy_model():
+    return load_model('policyfinal.h5')
 
-# Scaling for fraud detection features
-fraud_scaler = StandardScaler()
-fraud_scaler.fit(data[fraud_features])
+@st.cache_data
+def load_data_and_scalers():
+    data = pd.read_csv('C:\\Omega\\Semester 5\\Machine Learning\\Project\\final.csv')
+    
+    fraud_features = ['Age', 'ClaimAmount', 'PastNumberOfClaims', 'DriverRating', 'Deductible']
+    policy_features = ['WeekOfMonthClaimed', 'DayOfWeekClaimed', 'MonthClaimed', 'AgeOfPolicyHolder', 
+                       'ClaimAmount', 'AgeOfVehicle', 'Year']
 
-# Scaling for policy prediction features
-policy_scaler = StandardScaler()
-policy_scaler.fit(data[policy_features])
+    fraud_scaler = StandardScaler()
+    fraud_scaler.fit(data[fraud_features])
 
-# Label encoding for policy prediction
-label_encoder = LabelEncoder()
-data['PolicyType'] = label_encoder.fit_transform(data['PolicyType'])
+    policy_scaler = StandardScaler()
+    policy_scaler.fit(data[policy_features])
+
+    label_encoder = LabelEncoder()
+    data['PolicyType'] = label_encoder.fit_transform(data['PolicyType'])
+
+    return fraud_scaler, policy_scaler, label_encoder, fraud_features, policy_features
+
+
+# Load everything
+fraud_model = load_fraud_model()
+policy_model = load_policy_model()
+fraud_scaler, policy_scaler, label_encoder, fraud_features, policy_features = load_data_and_scalers()
 
 # Custom CSS for buttons and layout
 st.markdown("""
@@ -75,7 +87,16 @@ def get_policy_input():
     claim_amount = st.number_input("Claim Amount:", min_value=0, value=250000)
     vehicle_age = st.number_input("Age of the Vehicle:", min_value=0, value=5)
     claim_year = st.number_input("Year of the Claim:", min_value=1990, max_value=2024, value=2024)
-    return np.array([week_of_month, day_of_week, month_of_year, age, claim_amount, vehicle_age, claim_year]).reshape(1, -1)
+    
+    # Your 7 actual inputs
+    input_features = [week_of_month, day_of_week, month_of_year, age, claim_amount, vehicle_age, claim_year]
+
+    # Padding remaining 34 features with 0
+    missing_features = [0] * (41 - 7)
+
+    final_input = np.array(input_features + missing_features).reshape(1, -1)
+    return final_input
+
 
 # Home page with two buttons
 if st.session_state.page == 'home':
@@ -126,14 +147,18 @@ if st.session_state.page == 'insurance_policy':
     
     # Collect user input
     policy_input = get_policy_input()
+    
 
     # Button to trigger prediction
     if st.button("Predict Policy"):
-        # Scale the input
-        policy_input_scaled = policy_scaler.transform(policy_input)
+        policy_input_scaled_part = policy_scaler.transform(policy_input[:, :7])
 
-        # Predict using the trained model
-        policy_prediction_proba = policy_model.predict(policy_input_scaled)
+# Combine scaled part and remaining zeros
+        final_policy_input = np.hstack((policy_input_scaled_part, policy_input[:, 7:]))
+
+# Predict using the trained model
+        policy_prediction_proba = policy_model.predict(final_policy_input)
+
         predicted_class = np.argmax(policy_prediction_proba)
         predicted_label = label_encoder.inverse_transform([predicted_class])[0]
         
